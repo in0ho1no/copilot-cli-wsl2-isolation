@@ -104,6 +104,8 @@ def load_index(index_file: Path | None) -> Index:
     if index_file is not None:
         return cast(Index, json.loads(index_file.read_text(encoding='utf-8')))
     # URL を引数で受け取らないのは、取得先を公式の一覧に限定するため。
+    # URL は固定の https 値で外部から差し替えられないため、file:// を懸念する Semgrep の監査ルールは除外する。
+    # nosemgrep: python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
     with urlopen('https://nodejs.org/dist/index.json', timeout=30) as response:
         return cast(Index, json.load(response))
 
