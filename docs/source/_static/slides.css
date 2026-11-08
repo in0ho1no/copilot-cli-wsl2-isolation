@@ -105,6 +105,27 @@
   font-weight: 700;
 }
 
+/* ---- 自己紹介 ---- */
+
+.reveal .profile {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.reveal img.profile-icon {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.reveal .accounts p {
+  margin: 0 0 20px;
+  color: var(--c-muted);
+}
+
 /* ---- 章ラベル: 見出しの上に置く ---- */
 
 .reveal .eyebrow {

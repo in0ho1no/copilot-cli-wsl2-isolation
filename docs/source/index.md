@@ -24,11 +24,23 @@ GitHub: in0ho1no
 自己紹介
 :::
 
-::::{container} cards cols-2
+::::::{container} profile
+
+```{image} /_static/images/profile-icon.jpg
+:alt: プロフィール画像のジョウビタキ
+:class: profile-icon
+```
+
+:::::{container}
+:::{container} accounts
+GitHub: in0ho1no　／　X: @in0ho1no
+:::
+
+::::{container} stack
 :::{container} card
 普段は組み込み開発
 
-C言語一筋10年。趣味でPythonを数年
+C言語一筋10年 / 趣味でPythonを数年
 :::
 
 :::{container} card
@@ -37,9 +49,12 @@ AIは個人利用が主
 業務での利用は推進中
 :::
 ::::
+:::::
+::::::
 
 ```{revealjs-notes}
 普段は組み込み開発で、C言語一筋10年。Pythonは趣味で数年。AIは個人での利用が中心で、業務での利用はいま推進しているところ。今日の話も、その推進の中で出てきた要件への対応。
+登壇するのは初めての経験なので、お手柔らかに。
 ```
 
 ```{include} chapters/01-background.md
