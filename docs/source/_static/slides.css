@@ -1,6 +1,9 @@
 /*
  * 色は背景・文字・強調の3色を基本とし、強調色の淡色と補助の灰色を面と線に使う。
- * 本文は 32px (24pt) を下限とする。
+ *
+ * 発表形態はオンライン (画面共有) を前提とする。
+ * - 本文の下限は 28px (21pt)。
+ * - 本文は全幅を使い、キャラクターとの重なりは許容する。
  */
 :root {
   --c-bg: #ffffff;
@@ -22,10 +25,10 @@
   --r-link-color-hover: var(--c-accent);
   --r-main-font: "Yu Gothic", "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif;
   --r-heading-font: "Yu Gothic", "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif;
-  --r-main-font-size: 32px;
-  --r-heading1-size: 60px;
-  --r-heading2-size: 42px;
-  --r-heading3-size: 36px;
+  --r-main-font-size: 28px;
+  --r-heading1-size: 54px;
+  --r-heading2-size: 38px;
+  --r-heading3-size: 32px;
 }
 
 /* ---- 基本レイアウト ---- */
@@ -34,15 +37,13 @@
   text-align: left;
 }
 
-/* 右側20%はキャラクターの領域として空けておく */
 .reveal .slides section > :not(section) {
   box-sizing: border-box;
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .reveal .slides section > h2 {
-  max-width: 100%;
-  margin: 0 0 28px;
+  margin: 0 0 24px;
 }
 
 /* 日本語を文節単位で折り返す (未対応のブラウザでは通常の折り返しになる) */
@@ -83,7 +84,7 @@
 
 .reveal .subtitle p {
   color: var(--c-muted);
-  font-size: 34px;
+  font-size: 30px;
 }
 
 /* ---- アジェンダ: 番号付きの丸 ---- */
@@ -107,8 +108,8 @@
   display: grid;
   flex: none;
   place-items: center;
-  width: 52px;
-  height: 52px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: var(--c-accent);
   color: #ffffff;
@@ -234,7 +235,7 @@
   content: counter(step);
   display: block;
   margin-bottom: 8px;
-  font-size: 56px;
+  font-size: 48px;
   line-height: 1;
 }
 
@@ -286,8 +287,8 @@
   display: grid;
   flex: none;
   place-items: center;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: var(--c-accent);
   color: #ffffff;
@@ -331,6 +332,15 @@
   margin: 0;
 }
 
+.reveal .stack {
+  display: grid;
+  gap: 20px;
+}
+
+.reveal .card ul + p {
+  margin-top: 16px;
+}
+
 .reveal .panel p:first-child {
   color: var(--c-accent);
   font-weight: 700;
@@ -345,15 +355,10 @@
 
 /* ---- 表 ---- */
 
-/* 表は右端の列の余白だけキャラクター領域にかかる。文字はキャラクターより左に収まる */
-.reveal .slides section > table {
-  max-width: none;
-}
-
 .reveal table {
   margin: 0;
   border-collapse: collapse;
-  font-size: 32px;
+  font-size: 28px;
 }
 
 .reveal table tbody td {
@@ -396,7 +401,7 @@
 
 .reveal pre {
   margin-left: 0;
-  font-size: 32px;
+  font-size: 28px;
 }
 
 .reveal pre code {

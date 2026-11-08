@@ -1,28 +1,24 @@
 ## 運用方針：技術で誤操作を防ぎ、意図的な回避はルールで扱う
 
-:::{container} checklist
+:::::{container} split
+::::{container} checklist
 - 必ず案件ごとのランチャーから起動する
 - VS Code拡張機能のCopilot Chatは使わない
 - 案件のファイルは、その案件のディストリにだけ置く
 - Git操作は人が別ターミナルで行う
 - ディストリはいつでも作り直せる前提にする
-:::
+::::
 
-:::{container} callout
-Windows側の資料は、人が作業フォルダへコピーして渡す
-:::
-
-## 運用方針：封じ込めの対象外
-
-::::{container} cards cols-2
-:::{container} card pending
+::::{container} card pending
 封じ込めの対象外
 
 - 別ターミナルでの人の操作
 - ランチャーを通らない起動
-:::
 
-:::{container} card
 意図的に回避する人までは止めない。逃げ道を残し、急な作業で詰まらないようにする
-:::
 ::::
+:::::
+
+:::{container} callout
+Windows側の資料は、人が作業フォルダへコピーして渡す
+:::

@@ -13,15 +13,16 @@ Copilot CLI＋WSL2
 
 ## Copilot Chatだけでは、経路を止める境界がない
 
+:::::{container} split
+::::{container}
 ![Copilot Chat（VS Code）からコマンド実行・Web取得・MCPサーバを経由して外部へつながる経路の図](/_static/figures/chat-paths.svg)
 
 :::{container} callout
 実行前の承認は人の判断に頼る。OSが止めるわけではない
 :::
+::::
 
-## Copilot Chatだけでは、経路を止める境界がない（課題）
-
-::::{container} cards cols-2
+::::{container} stack
 :::{container} card
 通信
 
@@ -34,3 +35,4 @@ Copilot CLI＋WSL2
 ユーザメモリは全ワークスペース共通。VS Code Serverも案件をまたいで共有される
 :::
 ::::
+:::::

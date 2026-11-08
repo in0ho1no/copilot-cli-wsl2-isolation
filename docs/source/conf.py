@@ -29,6 +29,6 @@ revealjs_script_plugins = [
     {'name': 'RevealNotes', 'src': 'revealjs/plugin/notes/notes.js'},
 ]
 
-# 本文は slides.css で幅80%に収め、残りの右側20%にキャラクターを置く
+# オンライン発表のため、本文は全幅を使いキャラクターとの重なりを許容する (slides.css 冒頭を参照)
 revealjs_mascot_position = 'bottom-right'
 revealjs_mascot_width = 12

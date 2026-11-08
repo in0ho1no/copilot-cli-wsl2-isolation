@@ -1,5 +1,9 @@
 ## 案件ごとに起動を制御できるCopilot CLIを選んだ
 
+```{mascot}
+:position: top-right
+```
+
 |  | Copilot Chat | Chat＋Sandbox | Copilot CLI＋WSL2 |
 | --- | --- | --- | --- |
 | コマンドの通信遮断 | [×]{.ng} | [△]{.mid} 設定が別途必要 | [○]{.ok} |
@@ -11,15 +15,8 @@
 ○はWindows版の検証と設計に基づく評価。WSL2上の動作は未検証（後述）
 :::
 
-## 案件ごとに起動を制御できるCopilot CLIを選んだ（MXC）
-
-:::{container} rows
-MXCをWindowsで直接使う案
-: Claude Codeが未対応のため見送り
-:::
-
 :::{container} callout
-Claude Codeと手段を揃え、現場の混乱を減らす
+MXCをWindowsで直接使う案は、Claude Codeが未対応のため見送り。Claude Codeと手段を揃え、現場の混乱を減らす
 :::
 
 ## 案件ごとの専用ディストリに閉じ込める
