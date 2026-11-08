@@ -21,10 +21,11 @@ docs = [
 ]
 
 [tool.uv]
+# 公開直後のパッケージは悪意ある版や不安定な版の可能性があるため、7日経過した版だけを解決対象にする
+# Semgrep の uv-missing-dependency-cooldown はこのテーブル見出しから最初の角括弧までしか調べないため、配列を含む設定より前に置く
+exclude-newer = "7 days"
 # pyright は PATH 上の node が見つからないと nodeenv で Node.js を自動取得するため、mise で固定した版以外を使わせないよう除外する
 exclude-dependencies = ["nodeenv"]
-# 公開直後のパッケージは悪意ある版や不安定な版の可能性があるため、7日経過した版だけを解決対象にする
-exclude-newer = "7 days"
 
 [tool.uv.sources]
 sphinx-revealjs-mascot = { url = "https://github.com/in0ho1no/sphinx-revealjs-mascot/releases/download/v0.1.2/sphinx_revealjs_mascot-0.1.2-py3-none-any.whl" }
