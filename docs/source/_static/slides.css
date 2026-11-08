@@ -77,14 +77,74 @@
 
 .reveal .slides section:has(> h1) h1 {
   max-width: 100%;
-  margin: 210px 0 32px;
+  margin: 150px 0 32px;
   font-size: var(--r-heading1-size);
+  line-height: 1.35;
   color: var(--c-accent);
 }
 
 .reveal .subtitle p {
   color: var(--c-muted);
   font-size: 30px;
+}
+
+/* section の高さは内容に合わせて変わるため、下端ではなく上端から位置を決める */
+.reveal .byline {
+  position: absolute;
+  top: 520px;
+  left: 0;
+}
+
+.reveal .byline p {
+  margin: 0 0 4px;
+  color: var(--c-muted);
+}
+
+.reveal .byline p:first-child {
+  color: var(--c-text);
+  font-weight: 700;
+}
+
+/* ---- 章ラベル: 見出しの上に置く ---- */
+
+.reveal .eyebrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.reveal .eyebrow p {
+  margin: 0;
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+.reveal .slides section:has(> .eyebrow) > h2 {
+  margin-top: 46px;
+}
+
+.reveal .slides section:has(> h1) > .eyebrow {
+  top: 96px;
+}
+
+/* ---- 締めのスライド ---- */
+
+.reveal .slides section:has(> .closing) > h2 {
+  margin-top: 150px;
+  font-size: 48px;
+  line-height: 1.4;
+  color: var(--c-accent);
+}
+
+.reveal .closing p {
+  color: var(--c-muted);
+  font-size: 30px;
+}
+
+.reveal .closing p:last-child {
+  margin-top: 120px;
+  color: var(--c-text);
+  font-weight: 700;
 }
 
 /* ---- アジェンダ: 番号付きの丸 ---- */
@@ -250,6 +310,10 @@
   margin: 0;
 }
 
+.reveal .steps dd p + p {
+  margin-top: 8px;
+}
+
 /* 層: 1行目にラベルと小見出し、2行目に説明を全幅で置く */
 .reveal .rows.layers dl {
   gap: 8px 24px;
@@ -302,7 +366,7 @@
 /* ---- 結論・補足の帯 ---- */
 
 .reveal .callout {
-  margin-top: 24px;
+  margin: 24px 0;
   padding: 14px 28px;
   border-radius: 12px;
   background: var(--c-accent-tint);
@@ -311,6 +375,20 @@
 .reveal .callout p {
   margin: 0;
   font-weight: 700;
+}
+
+.reveal .callout p + p {
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+/* 想定外の挙動など、注意を引く帯 */
+.reveal .callout.warn {
+  background: #fdeceb;
+}
+
+.reveal .callout.warn p:first-child {
+  color: var(--c-warn);
 }
 
 .reveal .footnote p {
@@ -361,13 +439,19 @@
   font-size: 28px;
 }
 
-.reveal table tbody td {
+/* Sphinx はセルの中身を <p> で包むため、段落の余白を打ち消す */
+.reveal table p {
+  margin: 0;
+}
+
+/* 1列目は項目名なので折り返さず、説明の列に幅を回す */
+.reveal table tbody td:first-child {
   white-space: nowrap;
 }
 
 .reveal table th,
 .reveal table td {
-  padding: 8px 16px;
+  padding: 5px 16px;
   border-bottom: 1px solid var(--c-line);
   line-height: 1.4;
   vertical-align: middle;
@@ -400,11 +484,45 @@
 /* ---- コード ---- */
 
 .reveal pre {
-  margin-left: 0;
+  width: 100%;
+  margin: 0 0 16px;
   font-size: 28px;
+  box-shadow: none;
 }
 
+/* 長い行はスライド外へはみ出さないよう折り返す */
 .reveal pre code {
   max-height: none;
-  line-height: 1.35;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: #1f2937;
+  color: #f3f4f6;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.reveal pre code span {
+  color: inherit !important;
+}
+
+.reveal code {
+  font-family: "Cascadia Mono", "Consolas", "BIZ UDGothic", monospace;
+}
+
+.reveal p code,
+.reveal li code,
+.reveal td code {
+  padding: 0 6px;
+  border-radius: 6px;
+  background: var(--c-muted-tint);
+  font-size: 0.9em;
+}
+
+/* ---- 画面の画像 ---- */
+
+.reveal img.screenshot {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
 }

@@ -1,42 +1,58 @@
-# WSL2を用いたCopilot CLI環境の分離
+# 「外部通信禁止」と言われたので、<br>Copilot CLIをWSL2に閉じ込めた
 
 ```{mascot}
 :action: jump
 ```
 
-:::{container} subtitle
-外部通信の禁止と案件間の情報分離を、利用者のPC上で実現する
+:::{container} eyebrow
+GitHub Copilot CLI × WSL2
+:::
+
+:::{container} byline
+inoinoino
+
+GitHub: in0ho1no
 :::
 
 ```{revealjs-notes}
-顧客要件をきっかけに検討した、Copilotの封じ込め方法を紹介します。
+今日は、外部通信を禁止された案件でもCopilot CLIを使い続けるために作った環境と、その判断の過程を話す。（2分パートの入口）
 ```
 
-## アジェンダ
+## inoinoino
 
-:::{container} agenda
-1. そもそもの発端
-2. GitHub Copilot Chatでは不十分だった
-3. 単なるサンドボックスでは不十分だった
-4. Copilot CLI+WSL2で封じ込める
-5. 運用方針
-6. まとめ
+:::{container} eyebrow
+自己紹介
 :::
 
-```{include} chapters/01-origin.md
+::::{container} cards cols-2
+:::{container} card
+普段は組み込み開発
+
+C言語一筋10年。趣味でPythonを数年
+:::
+
+:::{container} card
+AIは個人利用が主
+
+業務での利用は推進中
+:::
+::::
+
+```{revealjs-notes}
+普段は組み込み開発で、C言語一筋10年。Pythonは趣味で数年。AIは個人での利用が中心で、業務での利用はいま推進しているところ。今日の話も、その推進の中で出てきた要件への対応。
+```
+
+```{include} chapters/01-background.md
 ```
 
 ```{include} chapters/02-copilot-chat.md
 ```
 
-```{include} chapters/03-sandbox.md
+```{include} chapters/03-confinement.md
 ```
 
-```{include} chapters/04-cli-wsl2.md
+```{include} chapters/04-operation.md
 ```
 
-```{include} chapters/05-operation.md
-```
-
-```{include} chapters/06-summary.md
+```{include} chapters/05-summary.md
 ```
