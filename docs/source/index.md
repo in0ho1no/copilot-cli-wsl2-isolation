@@ -1,52 +1,42 @@
-# sphinx-revealjs-mascot サンプル
-
-Markdown で書いたスライドにキャラクターを常駐させる例です。
-
-## スライドの基本
+# WSL2を用いたCopilot CLI環境の分離
 
 ```{mascot}
 :action: jump
 ```
 
-- `##` 見出しごとに1枚のスライドになります
-- 見出し直後の `mascot` でキャラクターの動きを指定します
-- M キーでキャラクターの表示・非表示を切り替えます
+:::{container} subtitle
+外部通信の禁止と案件間の情報分離を、利用者のPC上で実現する
+:::
 
 ```{revealjs-notes}
-発表者ノートです。S キーで開くスピーカービューに表示されます。
+顧客要件をきっかけに検討した、Copilotの封じ込め方法を紹介します。
 ```
 
-## 段階表示とリアクション
+## アジェンダ
 
-```{mascot-fragment}
-:action: wink
+:::{container} agenda
+1. そもそもの発端
+2. GitHub Copilot Chatでは不十分だった
+3. 単なるサンドボックスでは不十分だった
+4. Copilot CLI+WSL2で封じ込める
+5. 運用方針
+6. まとめ
+:::
 
-- 1つ目のブロックで表示する要点
-- 同じタイミングで表示する要点
+```{include} chapters/01-origin.md
 ```
 
-```{mascot-fragment}
-:action: surprise
-
-続けて表示する内容です。
+```{include} chapters/02-copilot-chat.md
 ```
 
-## 表示位置を変える
-
-```{mascot}
-:action: idle
-:position: bottom-left
+```{include} chapters/03-sandbox.md
 ```
 
-````{container} mascot-left
-キャラクターを左下へ移したスライドです。本文は CSS で右へ寄せています。
+```{include} chapters/04-cli-wsl2.md
+```
 
-| 指定 | 例 |
-| --- | --- |
-| 定型位置 | `bottom-left` |
-| 座標 | `70%, 60%` |
-````
+```{include} chapters/05-operation.md
+```
 
-## まとめ
-
-位置を指定しないスライドでは `conf.py` の位置 (右下) に戻ります。
+```{include} chapters/06-summary.md
+```

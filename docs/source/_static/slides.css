@@ -1,42 +1,398 @@
+/*
+ * 色は背景・文字・強調の3色を基本とし、強調色の淡色と補助の灰色を面と線に使う。
+ * 本文は 32px (24pt) を下限とする。
+ */
 :root {
-  --r-background-color: #ffffff;
-  --r-main-color: #1f2937;
-  --r-heading-color: #1f2937;
+  --c-bg: #ffffff;
+  --c-text: #1f2937;
+  --c-accent: #0759b5;
+  --c-accent-tint: #eaf1fa;
+  --c-muted: #4b5563;
+  --c-muted-tint: #f1f3f5;
+  --c-line: #c9d6e8;
+  --c-warn: #b42318;
+
+  --r-background-color: var(--c-bg);
+  --r-main-color: var(--c-text);
+  --r-heading-color: var(--c-text);
   --r-heading-text-transform: none;
-  --r-link-color: #0759b5;
-  --r-link-color-hover: #0759b5;
+  --r-heading-font-weight: 700;
+  --r-heading-line-height: 1.3;
+  --r-link-color: var(--c-accent);
+  --r-link-color-hover: var(--c-accent);
   --r-main-font: "Yu Gothic", "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif;
   --r-heading-font: "Yu Gothic", "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif;
-  --r-main-font-size: 36px;
-  --r-heading1-size: 1.7em;
-  --r-heading2-size: 1.3em;
-  --r-heading3-size: 1.1em;
+  --r-main-font-size: 32px;
+  --r-heading1-size: 60px;
+  --r-heading2-size: 42px;
+  --r-heading3-size: 36px;
 }
+
+/* ---- 基本レイアウト ---- */
 
 .reveal .slides {
   text-align: left;
 }
 
-/* 右下のキャラクター用に本文の右側を空ける */
+/* 右側20%はキャラクターの領域として空けておく */
 .reveal .slides section > :not(section) {
   box-sizing: border-box;
-  max-width: 76%;
+  max-width: 80%;
 }
 
-/* キャラクターを左側へ置くスライドでは本文を右へ寄せる */
-.reveal .slides section > .mascot-left {
-  margin-left: 24%;
+.reveal .slides section > h2 {
+  max-width: 100%;
+  margin: 0 0 28px;
+}
+
+/* 日本語を文節単位で折り返す (未対応のブラウザでは通常の折り返しになる) */
+.reveal h1,
+.reveal h2,
+.reveal p,
+.reveal li,
+.reveal dt,
+.reveal dd,
+.reveal th,
+.reveal td {
+  word-break: auto-phrase;
 }
 
 .reveal p,
-.reveal li {
-  line-height: 1.5;
+.reveal li,
+.reveal dd {
+  line-height: 1.45;
+}
+
+.reveal p {
+  margin: 0 0 20px;
+}
+
+.reveal ul,
+.reveal ol {
+  margin: 0;
+}
+
+/* ---- 表紙 ---- */
+
+.reveal .slides section:has(> h1) h1 {
+  max-width: 100%;
+  margin: 210px 0 32px;
+  font-size: var(--r-heading1-size);
+  color: var(--c-accent);
+}
+
+.reveal .subtitle p {
+  color: var(--c-muted);
+  font-size: 34px;
+}
+
+/* ---- アジェンダ: 番号付きの丸 ---- */
+
+.reveal .agenda ol {
+  list-style: none;
+  counter-reset: agenda;
+  padding: 0;
+}
+
+.reveal .agenda li {
+  counter-increment: agenda;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0 0 18px;
+}
+
+.reveal .agenda li::before {
+  content: counter(agenda);
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.reveal .agenda li p {
+  margin: 0;
+}
+
+/* ---- カード ---- */
+
+.reveal .cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.reveal .cards.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* 文節が列幅より長いときだけ文節の途中で折り返す */
+.reveal .cards p,
+.reveal .cards li {
+  overflow-wrap: anywhere;
+}
+
+.reveal .card {
+  padding: 28px;
+  border-radius: 16px;
+  background: var(--c-accent-tint);
+}
+
+.reveal .card p {
+  margin: 0 0 12px;
+}
+
+.reveal .card > p:first-child {
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+.reveal .card > :last-child {
+  margin-bottom: 0;
+}
+
+.reveal .card ul {
+  padding-left: 1.1em;
+}
+
+.reveal .card li + li {
+  margin-top: 6px;
+}
+
+.reveal .card.pending {
+  background: var(--c-muted-tint);
+}
+
+.reveal .card.pending > p:first-child {
+  color: var(--c-text);
+}
+
+/* ---- ラベルと説明の行 (定義リスト) ---- */
+
+.reveal .rows dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 14px 28px;
+  align-items: center;
+  margin: 0;
+}
+
+.reveal .rows dt {
+  margin: 0;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: var(--c-accent);
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.reveal .rows dd {
+  margin: 0;
+}
+
+.reveal .rows dd p {
+  margin: 0;
+}
+
+/* 説明が2段落あるときは1段落目を小見出しとして扱う */
+.reveal .rows dd > p:first-child:not(:last-child) {
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+/* 手順: 定義リストの各組を横に並べ、番号付きの列にする */
+.reveal .steps dl {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  grid-template-rows: auto 1fr;
+  gap: 0 24px;
+  margin: 0;
+  counter-reset: step;
+}
+
+.reveal .steps dt {
+  counter-increment: step;
+  margin: 0;
+  padding: 28px 28px 12px;
+  border-radius: 16px 16px 0 0;
+  background: var(--c-accent);
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.reveal .steps dt::before {
+  content: counter(step);
+  display: block;
+  margin-bottom: 8px;
+  font-size: 56px;
+  line-height: 1;
+}
+
+.reveal .steps dd {
+  margin: 0;
+  padding: 20px 28px 28px;
+  border-radius: 0 0 16px 16px;
+  background: var(--c-accent-tint);
+}
+
+.reveal .steps dd p {
+  margin: 0;
+}
+
+/* 層: 1行目にラベルと小見出し、2行目に説明を全幅で置く */
+.reveal .rows.layers dl {
+  gap: 8px 24px;
+}
+
+.reveal .rows.layers dd {
+  display: contents;
+}
+
+.reveal .rows.layers dd > p:last-child {
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+}
+
+.reveal .rows.compact dt {
+  text-align: center;
+}
+
+/* ---- チェックリスト ---- */
+
+.reveal .checklist ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reveal .checklist li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0 0 16px;
+}
+
+.reveal .checklist li::before {
+  content: "✓";
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.reveal .checklist li p {
+  margin: 0;
+}
+
+/* ---- 結論・補足の帯 ---- */
+
+.reveal .callout {
+  margin-top: 24px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: var(--c-accent-tint);
+}
+
+.reveal .callout p {
+  margin: 0;
+  font-weight: 700;
+}
+
+.reveal .footnote p {
+  margin: 20px 0 0;
+  color: var(--c-muted);
+}
+
+/* ---- 2段組み ---- */
+
+.reveal .split {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.reveal .split > :first-child img {
+  display: block;
+  margin: 0;
+}
+
+.reveal .panel p:first-child {
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+/* ---- 図 ---- */
+
+.reveal .slides img {
+  max-width: 100%;
+  margin: 0;
+}
+
+/* ---- 表 ---- */
+
+/* 表は右端の列の余白だけキャラクター領域にかかる。文字はキャラクターより左に収まる */
+.reveal .slides section > table {
+  max-width: none;
 }
 
 .reveal table {
-  margin-left: 0;
+  margin: 0;
+  border-collapse: collapse;
   font-size: 32px;
 }
+
+.reveal table tbody td {
+  white-space: nowrap;
+}
+
+.reveal table th,
+.reveal table td {
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--c-line);
+  line-height: 1.4;
+  vertical-align: middle;
+}
+
+.reveal table thead th {
+  border-bottom: 2px solid var(--c-accent);
+  color: var(--c-accent);
+}
+
+.reveal table tbody td:first-child {
+  font-weight: 700;
+}
+
+.reveal .ok {
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+.reveal .mid {
+  color: var(--c-muted);
+  font-weight: 700;
+}
+
+.reveal .ng {
+  color: var(--c-warn);
+  font-weight: 700;
+}
+
+/* ---- コード ---- */
 
 .reveal pre {
   margin-left: 0;

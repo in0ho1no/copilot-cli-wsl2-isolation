@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 440" width="580" height="440" role="img" aria-labelledby="title">
+  <title id="title">1台のPC上で、発注元Aと発注元Bの案件がAIのメモリ／workspaceを経由して混ざる</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0759b5"/>
+    </marker>
+  </defs>
+  <g font-family="Yu Gothic, Meiryo, Hiragino Kaku Gothic ProN, sans-serif" font-size="28" fill="#1f2937">
+    <rect x="1" y="1" width="578" height="438" rx="16" fill="#f1f3f5" stroke="#c9d6e8" stroke-width="2"/>
+    <text x="28" y="50" font-weight="700" fill="#4b5563">1台のPC／1人のユーザ</text>
+
+    <rect x="28" y="84" width="230" height="90" rx="12" fill="#ffffff" stroke="#0759b5" stroke-width="3"/>
+    <text x="143" y="139" text-anchor="middle" font-weight="700">発注元Aの案件</text>
+    <rect x="322" y="84" width="230" height="90" rx="12" fill="#ffffff" stroke="#0759b5" stroke-width="3"/>
+    <text x="437" y="139" text-anchor="middle" font-weight="700">発注元Bの案件</text>
+
+    <line x1="160" y1="182" x2="232" y2="272" stroke="#0759b5" stroke-width="4" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="420" y1="182" x2="348" y2="272" stroke="#0759b5" stroke-width="4" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+    <rect x="80" y="284" width="420" height="124" rx="14" fill="#0759b5"/>
+    <text x="290" y="336" text-anchor="middle" font-weight="700" fill="#ffffff">AIのメモリ／workspace</text>
+    <text x="290" y="384" text-anchor="middle" fill="#ffffff">ここを経由して情報が混ざる</text>
+  </g>
+</svg>
