@@ -14,10 +14,17 @@ dev = [
     "pytest>=9.0.3",
     "ruff>=0.15.11",
 ]
+docs = [
+    "myst-parser>=5.1.0",
+    "sphinx-revealjs-mascot",
+]
 
 [tool.uv]
 # pyright は PATH 上の node が見つからないと nodeenv で Node.js を自動取得するため、mise で固定した版以外を使わせないよう除外する
 exclude-dependencies = ["nodeenv"]
+
+[tool.uv.sources]
+sphinx-revealjs-mascot = { url = "https://github.com/in0ho1no/sphinx-revealjs-mascot/releases/download/v0.1.2/sphinx_revealjs_mascot-0.1.2-py3-none-any.whl" }
 
 [tool.ruff]
 # 1行の最大文字数
