@@ -16,6 +16,7 @@ dev = [
 ]
 docs = [
     "myst-parser>=5.1.0",
+    "sphinx-autobuild>=2025.8.25",
     "sphinx-revealjs-mascot",
 ]
 
