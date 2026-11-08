@@ -1,52 +1,73 @@
-# sphinx-revealjs-mascot サンプル
-
-Markdown で書いたスライドにキャラクターを常駐させる例です。
-
-## スライドの基本
+# 「外部通信禁止」と言われたので、<br>Copilot CLIをWSL2に閉じ込めた
 
 ```{mascot}
 :action: jump
 ```
 
-- `##` 見出しごとに1枚のスライドになります
-- 見出し直後の `mascot` でキャラクターの動きを指定します
-- M キーでキャラクターの表示・非表示を切り替えます
+:::{container} eyebrow
+GitHub Copilot CLI × WSL2
+:::
+
+:::{container} byline
+inoinoino
+
+GitHub: in0ho1no
+:::
 
 ```{revealjs-notes}
-発表者ノートです。S キーで開くスピーカービューに表示されます。
+今日は、外部通信を禁止された案件でもCopilot CLIを使い続けるために作った環境と、その判断の過程を話す。（2分パートの入口）
 ```
 
-## 段階表示とリアクション
+## inoinoino
 
-```{mascot-fragment}
-:action: wink
+:::{container} eyebrow
+自己紹介
+:::
 
-- 1つ目のブロックで表示する要点
-- 同じタイミングで表示する要点
+::::::{container} profile
+
+```{image} /_static/images/profile-icon.jpg
+:alt: プロフィール画像のジョウビタキ
+:class: profile-icon
 ```
 
-```{mascot-fragment}
-:action: surprise
+:::::{container}
+:::{container} accounts
+GitHub: in0ho1no　／　X: @in0ho1no
+:::
 
-続けて表示する内容です。
+::::{container} stack
+:::{container} card
+普段は組み込み開発
+
+C言語一筋10年 / 趣味でPythonを数年
+:::
+
+:::{container} card
+AIは個人利用が主
+
+業務での利用は推進中
+:::
+::::
+:::::
+::::::
+
+```{revealjs-notes}
+普段は組み込み開発で、C言語一筋10年。Pythonは趣味で数年。AIは個人での利用が中心で、業務での利用はいま推進しているところ。今日の話も、その推進の中で出てきた要件への対応。
+登壇するのは初めての経験なので、お手柔らかに。
 ```
 
-## 表示位置を変える
-
-```{mascot}
-:action: idle
-:position: bottom-left
+```{include} chapters/01-background.md
 ```
 
-````{container} mascot-left
-キャラクターを左下へ移したスライドです。本文は CSS で右へ寄せています。
+```{include} chapters/02-copilot-chat.md
+```
 
-| 指定 | 例 |
-| --- | --- |
-| 定型位置 | `bottom-left` |
-| 座標 | `70%, 60%` |
-````
+```{include} chapters/03-confinement.md
+```
 
-## まとめ
+```{include} chapters/04-operation.md
+```
 
-位置を指定しないスライドでは `conf.py` の位置 (右下) に戻ります。
+```{include} chapters/05-summary.md
+```
