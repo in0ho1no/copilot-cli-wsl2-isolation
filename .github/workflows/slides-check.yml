@@ -1,0 +1,37 @@
+name: Slides Check
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# 同じPRに続けてPushしたときは、古いビルドを止めて最新だけを確かめる
+concurrency:
+  group: slides-check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+      - name: Install slide dependencies
+        run: uv sync --locked --only-group docs
+      - name: Build slides
+        run: uv run --frozen --no-sync sphinx-build -E -W --keep-going -b revealjs docs/source docs/_build/revealjs
+      - name: Upload built slides
+        # 公開前の見た目をPRから確かめられるよう、ビルド結果をダウンロードできる形で残す
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: slides-preview
+          path: docs/_build/revealjs
+          retention-days: 7
