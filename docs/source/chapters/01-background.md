@@ -57,7 +57,7 @@ AIの「Web検索」をオフにするよう求められた。これを「外部
 ```
 
 :::{container} eyebrow
-先に結論
+01 先に結論
 :::
 
 ```{image} /_static/figures/sandbox-curl-blocked.png
