@@ -71,6 +71,7 @@ MXCを使わなかった理由は2つ。1つはClaude Codeでの利用も見据�
 
 :::::{container} split
 ::::{container}
+
 ```{code-block} text
 :caption: /etc/github-copilot/managed-settings.json
 
@@ -85,22 +86,23 @@ MXCを使わなかった理由は2つ。1つはClaude Codeでの利用も見据�
   } }
 }
 ```
+
 ::::
 
 ::::{container} rows layers
-root所有で置く
-: 他のユーザが書き込めると無視される
+エージェントの手が届かない場所に置く
+: rootだけが書き込めるファイルにする
 
 ここより緩められない
 : ユーザ設定、リポジトリの設定、起動時の引数のどれでも
 
 効いているかを見る
-: `/sandbox` の表示に（managed）と出るか
+: 条件外は黙って無視される。`/sandbox`に（managed）と出るか
 ::::
 :::::
 
 ```{revealjs-notes}
-サンドボックスの設定は、/sandbox configで手で入れることもできるが、それだとエージェントやリポジトリ側の設定で緩められる余地が残る。root所有の管理設定ファイルに置くと、それより緩められない下限になる。実際は項目ごとの表示ではなく、/sandbox statusと/sandbox policyの末尾に「your organization's managed policy requires sandboxing」のような文が出る。スライドでは短く（managed）と書いている。個人のCopilot Pro+でも、ファイルで置いた管理設定が効いた。
+サンドボックスの設定は、/sandbox configで手で入れることもできるが、それだとエージェントやリポジトリ側の設定で緩められる余地が残る。そこで管理設定ファイルに置く。エージェントは利用者と同じworkerの権限で動くので、rootだけが書き込めるファイルにしておけば、エージェントには書き換えられない。Copilot CLIのほうも、root所有でない、root以外が書き込める、シンボリックリンクである、のどれかに当てはまるファイルは信用せず、エラーも出さずに無視する。だから構築のたびに表示で確かめる。実際は項目ごとの表示ではなく、/sandbox statusと/sandbox policyの末尾に「your organization's managed policy requires sandboxing」のような文が出る。スライドでは短く（managed）と書いている。個人のCopilot Pro+でも、ファイルで置いた管理設定が効いた。
 ```
 
 ## 検証結果：何がどう遮断されたか
@@ -172,6 +174,7 @@ disableAllHooksでも作業フォルダのフックは動いた。ただしフ�
 
 ::::{container} cards cols-2
 :::{container} card pending
+
 ```text
 $ cat ~/outside/secret.txt
 No such file or directory
@@ -181,6 +184,7 @@ No such file or directory
 :::
 
 :::{container} card pending
+
 ```text
 $ touch ~/probe ~/.copilot/probe
 （作成できたと表示）

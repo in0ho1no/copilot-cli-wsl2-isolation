@@ -16,6 +16,8 @@ myst_enable_extensions = ['colon_fence', 'deflist', 'attrs_inline']
 
 revealjs_static_path = ['_static']
 revealjs_css_files = ['slides.css']
+# 章ラベルを全章のナビに置き換える (章名は Markdown の eyebrow から取る)
+revealjs_js_files = ['chapter-nav.js']
 revealjs_style_theme = 'white'
 revealjs_script_conf = {
     'width': 1280,

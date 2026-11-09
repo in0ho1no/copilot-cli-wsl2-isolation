@@ -148,6 +148,38 @@
   top: 96px;
 }
 
+/* ---- 章ナビ: chapter-nav.js が eyebrow を置き換える ---- */
+
+.reveal .chapter-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+}
+
+.reveal .chapter-nav .ch {
+  padding: 2px 14px;
+  border: 1px solid var(--c-line);
+  border-radius: 999px;
+  color: var(--c-muted);
+  font-weight: 400;
+}
+
+.reveal .chapter-nav .ch.current {
+  border-color: var(--c-accent);
+  background: var(--c-accent);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.reveal .chapter-nav .sep {
+  color: var(--c-line);
+}
+
+.reveal .slides section:has(> .eyebrow.has-chapter-nav) > h2 {
+  margin-top: 60px;
+}
+
 /* ---- 締めのスライド ---- */
 
 .reveal .slides section:has(> .closing) > h2 {
