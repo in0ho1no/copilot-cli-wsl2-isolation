@@ -1,5 +1,9 @@
 ## VS CodeのSandboxを有効にしても、通信は止まらない
 
+```{mascot}
+:position: bottom-left
+```
+
 :::{container} eyebrow
 02 Copilot Chatでは足りなかった
 :::
@@ -20,6 +24,10 @@ Localセッション
 ```
 
 ## 案件単位で強制できない
+
+```{mascot}
+:position: bottom-left
+```
 
 :::{container} eyebrow
 02 Copilot Chatでは足りなかった

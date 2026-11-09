@@ -71,6 +71,7 @@ MXCを使わなかった理由は2つ。1つはClaude Codeでの利用も見据�
 
 :::::{container} split
 ::::{container}
+
 ```{code-block} text
 :caption: /etc/github-copilot/managed-settings.json
 
@@ -85,6 +86,7 @@ MXCを使わなかった理由は2つ。1つはClaude Codeでの利用も見据�
   } }
 }
 ```
+
 ::::
 
 ::::{container} rows layers
@@ -172,6 +174,7 @@ disableAllHooksでも作業フォルダのフックは動いた。ただしフ�
 
 ::::{container} cards cols-2
 :::{container} card pending
+
 ```text
 $ cat ~/outside/secret.txt
 No such file or directory
@@ -181,6 +184,7 @@ No such file or directory
 :::
 
 :::{container} card pending
+
 ```text
 $ touch ~/probe ~/.copilot/probe
 （作成できたと表示）

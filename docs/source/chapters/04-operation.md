@@ -1,16 +1,22 @@
 ## 利用者へのお願いは「ランチャーから起動する」だけ
 
+```{mascot}
+:position: bottom-left
+```
+
 :::{container} eyebrow
 04 運用に落とす
 :::
 
 :::::{container} split
 ::::{container}
+
 ```text
 $ copilot
 Copilot CLIはランチャー（/opt/ai-env/launch-copilot.sh）から起動してください
 $ /opt/ai-env/launch-copilot.sh
 ```
+
 ::::
 
 ::::{container} card
@@ -31,6 +37,10 @@ $ /opt/ai-env/launch-copilot.sh
 ```
 
 ## Git：コミットはエージェント、Pushは人
+
+```{mascot}
+:position: bottom-left
+```
 
 :::{container} eyebrow
 04 運用に落とす
@@ -65,6 +75,10 @@ fine-grained PATでPushする
 
 ## 仕込まれたフックは、人の操作で動く
 
+```{mascot}
+:position: bottom-left
+```
+
 :::{container} eyebrow
 04 運用に落とす
 :::
@@ -75,6 +89,7 @@ fine-grained PATでPushする
 
 :::::{container} split
 ::::{container}
+
 | 対象 | 所有者と権限 |
 | --- | --- |
 | `.git` | root:worker 3775（作れるが消せない） |
@@ -94,6 +109,10 @@ fine-grained PATでPushする
 ```
 
 ## 消すときは、トークンを取り消してから
+
+```{mascot}
+:position: bottom-left
+```
 
 :::{container} eyebrow
 04 運用に落とす
@@ -124,6 +143,10 @@ fine-grained PATでPushする
 ```
 
 ## VS Codeは、制限モードでAI機能なしで使う
+
+```{mascot}
+:position: bottom-left
+```
 
 :::{container} eyebrow
 04 運用に落とす
