@@ -57,6 +57,24 @@ AIは個人利用が主
 登壇するのは初めての経験なので、お手柔らかに。
 ```
 
+## 今日の流れ
+
+:::{container} eyebrow
+アジェンダ
+:::
+
+:::{container} agenda
+1. 背景：外部通信禁止の要件と、案件混在の防止
+2. Copilot Chatでは足りなかった
+3. Copilot CLIをWSL2に閉じ込める
+4. 運用に落とす
+5. まとめ：多層防御の一層と、残る制約
+:::
+
+```{revealjs-notes}
+今日の流れ。背景、最初に試したCopilot Chatで足りなかったこと、本題のWSL2への閉じ込め、運用への落とし込み、最後に残る制約の順に話す。3章が中心。
+```
+
 ```{include} chapters/01-background.md
 ```
 
