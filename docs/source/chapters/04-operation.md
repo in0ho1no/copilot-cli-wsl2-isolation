@@ -99,6 +99,8 @@ fine-grained PATでPushする
 04 運用に落とす
 :::
 
+削除は専用のスクリプト（`Remove-AiDistro.ps1`）で行う。
+
 :::{container} steps
 取り出す
 : ディストリ内のトークン。値は表示しない
@@ -123,23 +125,23 @@ fine-grained PATでPushする
 案件が終わってディストリを消すとき、中のCopilot CLIのトークンはGitHub側で有効なまま残る。削除スクリプトは、トークンを取り出して取り消し、無効になったのを確かめてからディストリを消す。2つのディストリで、取り消しと削除まで成功した。
 ```
 
-## VS Codeは、制限モードでAI機能なしで使う
+## VS Codeは、Windows側から開いて使う
 
 :::{container} eyebrow
 04 運用に落とす
 :::
 
 :::{container} rows
-WSL拡張では接続できない
-: automountを切っているため。VS Code Serverの導入に`/mnt/c`を使う
-
 `\\wsl.localhost`経由で開く
-: Windows側のVS Codeで、案件ディストリの作業フォルダを直接開く
+: automountを切っているので、WSL拡張では接続できない
 
-信頼しない、AIを使わない
-: 制限モードでtasks.jsonなどの自動実行を防ぐ。AI拡張はサンドボックスを通らないので使わない
+AI拡張は使わない
+: サンドボックスを通らずに、案件のファイルを扱えてしまう
+
+制限モードで開く
+: エージェントが置いた`tasks.json`などが、Windows本体で自動実行されるのを防ぐ
 :::
 
 ```{revealjs-notes}
-IDEとして使いたいという声には、Windows側のVS Codeで\\wsl.localhost経由で開く形で応える。Windows本体には制限がないので、ワークスペースは信頼せず、Copilot ChatなどのAI機能は使わない運用ルールにした。
+IDEとして使いたいという声には、Windows側のVS Codeで\\wsl.localhost経由で開く形で応える。WSL拡張はVS Code Serverの導入に/mnt/cを使うので、automountを切ったこの構成ではつながらない。Windows本体には制限がないので、Copilot ChatなどのAI拡張は使わない。また、エージェントはサンドボックスの中でも作業フォルダに.vscode/tasks.jsonを書ける。信頼したワークスペースとして開くと、フォルダを開いたときに動くタスクがWindows本体で実行されてしまう。前の章のフックと同じで、エージェントが仕込み、人の操作で動く構図なので、制限モードで開く。
 ```
